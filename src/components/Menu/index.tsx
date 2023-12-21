@@ -61,8 +61,8 @@ export function NavigationMenuDemo() {
             <NavigationMenuTrigger>ERC20 Faucets</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="bg-gradient-to-r from-blue-500 to-cyan-500 grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                <ListItem href="/pcf" title="Polygon ERC20 Faucet">
-                  Polygon Erc20 Faucet
+                <ListItem href="/pcf" title="Polygon Faucet">
+                  Polygon Faucet
                 </ListItem>
                 <ListItem href="/docs/installation" title="Installation">
                   How to install dependencies and structure your app.
