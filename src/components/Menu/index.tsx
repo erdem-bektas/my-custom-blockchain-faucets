@@ -61,14 +61,17 @@ export function NavigationMenuDemo() {
             <NavigationMenuTrigger>ERC20 Faucets</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="bg-gradient-to-r from-blue-500 to-cyan-500 grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                <ListItem href="/pcf" title="Polygon Faucet">
-                  Polygon Faucet
+                <ListItem href="/polygonCustomTokenFaucet" title="Polygon Custom Faucet">
+                  <li>ERC20</li>
+                  <li>ERC721</li>
                 </ListItem>
-                <ListItem href="/docs/installation" title="Installation">
-                  How to install dependencies and structure your app.
+                <ListItem href="/ethereumCustomTokenFaucet" title="Ethereum Custom Token Faucet">
+                  <li>ERC20</li>
+                  <li>ERC721</li>
                 </ListItem>
-                <ListItem href="/docs/primitives/typography" title="Typography">
-                  Styles for headings, paragraphs, lists...etc
+                <ListItem href="/bscCustomTokenFaucet" title="BSC Custom Token Faucet">
+                  <li>ERC20</li>
+                  <li>ERC721</li>
                 </ListItem>
               </ul>
             </NavigationMenuContent>

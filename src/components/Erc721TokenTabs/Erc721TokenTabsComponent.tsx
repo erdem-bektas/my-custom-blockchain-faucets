@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -23,34 +24,42 @@ interface TabContentProps {
   walletId: string;
 }
 
-const TabContent: React.FC<TabContentProps> = ({
-  tokenType,
-  nftId,
-  walletId,
-}) => (
-  <Card>
-    <CardHeader>
-      <CardTitle>Erc721 {tokenType} (NFT)</CardTitle>
-      <CardDescription>
-        Make changes to your account here. Click save when you're done.
-      </CardDescription>
-    </CardHeader>
-    <CardContent className="space-y-2">
-      <div className="space-y-1">
-        <Label htmlFor={nftId}>NFT ID</Label>
-        <Input id={nftId} placeholder="123" />
-      </div>
-      <div className="space-y-1">
-        <Label htmlFor={walletId}>Wallet</Label>
-        <Input id={walletId} placeholder="0x..." />
-      </div>
-    </CardContent>
-    <CardFooter>
-      <Button className="rounded bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-500 hover:to-cyan-500 transition duration-300 ease-in-out">
-        <span className="mx-4">Send</span>
-      </Button>
-    </CardFooter>
-  </Card>
+const TabContent = React.memo(
+  ({ tokenType, nftId, walletId }: TabContentProps) => {
+    return (
+      <Card className="rounded-lg shadow-md p-4">
+        <CardHeader className="text-gray-700 font-semibold py-2 px-4 border-b border-gray-200 rounded-t-lg">
+          <CardTitle>Erc721 {tokenType} (NFT)</CardTitle>
+          <CardDescription>
+            Make changes to your account here. Click save when you're done.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4 p-4">
+          <div className="space-y-2">
+            <Label htmlFor={nftId}>NFT ID</Label>
+            <Input
+              className="border focus:border-blue-500 rounded-xl py-2 px-4 block w-full focus:outline-none"
+              id={nftId}
+              placeholder="123"
+            />
+          </div>
+          <div className="space-y-1">
+            <Label htmlFor={walletId}>Wallet</Label>
+            <Input
+              className="border focus:border-blue-500 rounded-xl py-2 px-4 block w-full focus:outline-none"
+              id={walletId}
+              placeholder="0x..."
+            />
+          </div>
+        </CardContent>
+        <CardFooter>
+          <Button className="rounded bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-500 hover:to-cyan-500 transition duration-300 ease-in-out">
+            <span className="mx-4">Send</span>
+          </Button>
+        </CardFooter>
+      </Card>
+    );
+  }
 );
 
 const Erc721TokenTabs: React.FC = () => {
@@ -62,10 +71,18 @@ const Erc721TokenTabs: React.FC = () => {
 
   return (
     <div className="flex justify-center my-8">
-      <Tabs defaultValue="x" className="w-[400px]">
-        <TabsList className="grid w-full grid-cols-3">
+      <Tabs defaultValue="x" className="w-full md:w-[600px]">
+        <TabsList className="grid w-full grid-cols-3 border-b-2 divide-x divide-gray-300">
           {tabsData.map((tab) => (
-            <TabsTrigger key={tab.value} value={tab.value}>
+            <TabsTrigger
+              key={tab.value}
+              value={tab.value}
+              className={clsx(
+                "transition duration-300 ease-in-out",
+                "hover:border-blue-500 hover:shadow-md hover:bg-gray-100",
+                "tab-active:bg-blue-100 tab-active:shadow-lg tab-active:border-blue-600"
+              )}
+            >
               {tab.label}
             </TabsTrigger>
           ))}
