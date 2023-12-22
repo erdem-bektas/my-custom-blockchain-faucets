@@ -18,34 +18,34 @@ import { sendTokenData } from "@/utils/api";
 interface TabData {
   value: string;
   label: string;
-  amountDefaultValue: number;
 }
 
 interface TabContentProps {
   tokenType: string;
-  amountDefaultValue: number;
+  nftId: string;
+  wallet: string;
 }
 
-const TokenTabContent = React.memo(({ tokenType, amountDefaultValue }: TabContentProps) => {
+const TabContent = React.memo(({ tokenType, nftId, wallet }: TabContentProps) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [amount, setAmount] = useState<number>(amountDefaultValue);
-  const [wallet, setWallet] = useState<string>('');
+  const [inputNftId, setInputNftId] = useState<string>('');
+  const [inputWallet, setInputwallet] = useState<string>('');
 
-  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAmount(Number(e.target.value));
+  const handleNftIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputNftId(e.target.value);
   };
 
   const handleWalletChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setWallet(e.target.value);
+    setInputwallet(e.target.value);
   };
 
   const handleSubmit = () => {
     setIsLoading(true);
     const data: ITokenData = {
-      type: 'Erc20',
+      type: 'Erc721',
       tokenType,
-      amount,
-      wallet,
+      nftId: inputNftId,
+      wallet: inputWallet,
     };
     sendTokenData(data).then(() => setIsLoading(false)).catch(() => setIsLoading(true));
   };
@@ -57,34 +57,28 @@ const TokenTabContent = React.memo(({ tokenType, amountDefaultValue }: TabConten
   return (
     <Card className="rounded-lg shadow-md p-4">
       <CardHeader className="text-gray-700 font-semibold py-2 px-4 border-b border-gray-200 rounded-t-lg">
-        <CardTitle>{tokenType} Token</CardTitle>
+        <CardTitle>Erc721 {tokenType} (NFT)</CardTitle>
         <CardDescription>
           Make changes to your account here. Click save when you're done.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4 p-4">
         <div className="space-y-2">
-          <Label htmlFor={`amount-${tokenType}`} className="font-semibold">
-            Amount
-          </Label>
+          <Label htmlFor={nftId}>NFT ID</Label>
           <Input
-            onChange={handleAmountChange}
+            onChange={handleNftIdChange}
             className="border focus:border-blue-500 rounded-xl py-2 px-4 block w-full focus:outline-none"
-            id={`amount-${tokenType}`}
-            placeholder="0x..."
-            defaultValue={amountDefaultValue}
+            id={nftId}
+            placeholder="123"
           />
         </div>
-        <div className="space-y-2">
-          <Label htmlFor={`wallet-${tokenType}`} className="font-semibold">
-            Wallet
-          </Label>
+        <div className="space-y-1">
+          <Label htmlFor={wallet}>Wallet</Label>
           <Input
             onChange={handleWalletChange}
             className="border focus:border-blue-500 rounded-xl py-2 px-4 block w-full focus:outline-none"
-            id={`wallet-${tokenType}`}
+            id={wallet}
             placeholder="0x..."
-            defaultValue=""
           />
         </div>
       </CardContent>
@@ -93,17 +87,18 @@ const TokenTabContent = React.memo(({ tokenType, amountDefaultValue }: TabConten
           className="rounded bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-500 hover:to-cyan-500 transition duration-300 ease-in-out"
           onClick={handleSubmit}
         >
-          Mint
+          <span className="mx-4">Send</span>
         </Button>
       </CardFooter>
     </Card>
-  )
-});
+  );
+}
+);
 
-const Erc20TokenTabs: React.FC = () => {
+const Erc721TokenTabs: React.FC = () => {
   const tabsData: TabData[] = [
-    { value: "x", label: "X", amountDefaultValue: 618 },
-    { value: "y", label: "Y", amountDefaultValue: 619 },
+    { value: "x", label: "X Token" },
+    { value: "y", label: "Y Token" },
   ];
 
   return (
@@ -120,15 +115,16 @@ const Erc20TokenTabs: React.FC = () => {
                 "tab-active:bg-blue-100 tab-active:shadow-lg tab-active:border-blue-600"
               )}
             >
-              {tab.label} Token
+              {tab.label}
             </TabsTrigger>
           ))}
         </TabsList>
         {tabsData.map((tab) => (
           <TabsContent key={tab.value} value={tab.value}>
-            <TokenTabContent
+            <TabContent
               tokenType={tab.label}
-              amountDefaultValue={tab.amountDefaultValue}
+              nftId={`${tab.value}NftId`}
+              wallet={`${tab.value}Wallet`}
             />
           </TabsContent>
         ))}
@@ -137,4 +133,4 @@ const Erc20TokenTabs: React.FC = () => {
   );
 };
 
-export default Erc20TokenTabs; 
+export default Erc721TokenTabs;

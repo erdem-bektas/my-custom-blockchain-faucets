@@ -1,8 +1,8 @@
-import Erc721TokenTabsComponent from './Erc721TokenTabsComponent';
+import Erc721TokenTabs from './Erc721TokenTabs';
 
-export default function Erc721TokenTabs() {
+export default function Erc721TokenTab() {
   return (
-    <Erc721TokenTabsComponent />
+    <Erc721TokenTabs />
   );
 }
 
