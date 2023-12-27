@@ -58,26 +58,26 @@ export function NavigationMenuDemo() {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>ERC20 Faucets</NavigationMenuTrigger>
+            <NavigationMenuTrigger>Faucets</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="bg-gradient-to-r from-blue-500 to-cyan-500 grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 <ListItem href="/polygonCustomTokenFaucet" title="Polygon Custom Faucet">
                   <li>ERC20</li>
-                  <li>ERC721</li>
+                  <li>ERC721(development)</li>
                 </ListItem>
                 <ListItem href="/ethereumCustomTokenFaucet" title="Ethereum Custom Token Faucet">
                   <li>ERC20</li>
-                  <li>ERC721</li>
+                  <li>ERC721(development)</li>
                 </ListItem>
                 <ListItem href="/bscCustomTokenFaucet" title="BSC Custom Token Faucet">
                   <li>ERC20</li>
-                  <li>ERC721</li>
+                  <li>ERC721(development)</li>
                 </ListItem>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+            {/* <NavigationMenuTrigger>Components</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="bg-gradient-to-r from-blue-500 to-cyan-500 grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {components.map((component) => (
@@ -90,7 +90,7 @@ export function NavigationMenuDemo() {
                   </ListItem>
                 ))}
               </ul>
-            </NavigationMenuContent>
+            </NavigationMenuContent> */}
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Link href="/docs" legacyBehavior passHref>

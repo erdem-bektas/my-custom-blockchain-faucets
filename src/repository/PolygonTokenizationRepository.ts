@@ -30,11 +30,18 @@ class PolygonErc721RepositoryClass extends Erc721Token {
   }
 }
 
-export const PolygonErc20Repository = new PolygonErc20RepositoryClass(
+export const PolygonErc20XTokenRepository = new PolygonErc20RepositoryClass(
   config.polygon_erc20contractAddress,
   provider,
   config.polygon_erc20contractOwner,
   config.polygon_erc20contractAbi
+);
+
+export const PolygonErc20YTokenRepository = new PolygonErc20RepositoryClass(
+  config.polygon_erc20YTokencontractAddress,
+  provider,
+  config.polygon_erc20YTokencontractOwner,
+  config.polygon_erc20YTokencontractAbi
 );
 
 export const PolygonErc721Repository = new PolygonErc721RepositoryClass(

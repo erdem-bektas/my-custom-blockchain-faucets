@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import clsx from "clsx";
 import { Button } from "@/components/ui/button";
 import {
@@ -24,9 +24,10 @@ interface TabData {
 interface TabContentProps {
   tokenType: string;
   amountDefaultValue: number;
+  network: string;
 }
 
-const TokenTabContent = React.memo(({ tokenType, amountDefaultValue }: TabContentProps) => {
+const TokenTabContent = React.memo(({ tokenType, amountDefaultValue, network }: TabContentProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState<number>(amountDefaultValue);
   const [wallet, setWallet] = useState<string>('');
@@ -42,10 +43,11 @@ const TokenTabContent = React.memo(({ tokenType, amountDefaultValue }: TabConten
   const handleSubmit = () => {
     setIsLoading(true);
     const data: ITokenData = {
-      type: 'Erc20',
-      tokenType,
-      amount,
-      wallet,
+      network: network,
+      wallet: wallet,
+      amount: amount,
+      tokenType: "Erc20",
+      token: 'X',
     };
     sendTokenData(data).then(() => setIsLoading(false)).catch(() => setIsLoading(true));
   };
@@ -100,7 +102,7 @@ const TokenTabContent = React.memo(({ tokenType, amountDefaultValue }: TabConten
   )
 });
 
-const Erc20TokenTabs: React.FC = () => {
+const Erc20TokenTabs: FC<{ network: NetworkType }> = ({ network }) => {
   const tabsData: TabData[] = [
     { value: "x", label: "X", amountDefaultValue: 618 },
     { value: "y", label: "Y", amountDefaultValue: 619 },
@@ -127,6 +129,7 @@ const Erc20TokenTabs: React.FC = () => {
         {tabsData.map((tab) => (
           <TabsContent key={tab.value} value={tab.value}>
             <TokenTabContent
+              network={network}
               tokenType={tab.label}
               amountDefaultValue={tab.amountDefaultValue}
             />

@@ -30,11 +30,18 @@ class EthereumErc721RepositoryClass extends Erc721Token {
   }
 }
 
-export const EthereumErc20Repository = new EthereumErc20RepositoryClass(
+export const EthereumErc20XTokenRepository = new EthereumErc20RepositoryClass(
   config.eth_erc20contractAddress,
   provider,
   config.eth_erc20contractOwner,
   config.eth_erc20contractAbi
+);
+
+export const EthereumErc20YTokenRepository = new EthereumErc20RepositoryClass(
+  config.eth_erc20YTokencontractAddress,
+  provider,
+  config.eth_erc20YTokencontractOwner,
+  config.eth_erc20YTokencontractAbi
 );
 
 export const EthereumErc721Repository = new EthereumErc721RepositoryClass(

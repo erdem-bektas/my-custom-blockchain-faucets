@@ -1,8 +1,10 @@
+import { FC } from 'react';
 import Erc20TokenTabs from './Erc20TokenTabs';
 
-export default function Erc20TokenTab() {
+const Erc20TokenTab: FC<{ network: NetworkType }> = ({ network }) => {
   return (
-    <Erc20TokenTabs />
+    <Erc20TokenTabs network={network} />
   );
 }
 
+export default Erc20TokenTab;

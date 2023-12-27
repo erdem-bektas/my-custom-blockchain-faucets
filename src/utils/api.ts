@@ -9,7 +9,7 @@ export interface ApiResponse<T> {
 
 export const sendTokenData = async <T>(data: ITokenData): Promise<ApiResponse<T>> => {
     try {
-        const response = await axios.post('/api/token-send', data);
+        const response = await axios.post('/api/token-transaction', data);
 
         return {
             success: "pending",

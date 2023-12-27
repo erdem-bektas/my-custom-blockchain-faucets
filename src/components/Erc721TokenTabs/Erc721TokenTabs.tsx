@@ -57,7 +57,7 @@ const TabContent = React.memo(({ tokenType, nftId, wallet }: TabContentProps) =>
   return (
     <Card className="rounded-lg shadow-md p-4">
       <CardHeader className="text-gray-700 font-semibold py-2 px-4 border-b border-gray-200 rounded-t-lg">
-        <CardTitle>Erc721 {tokenType} (NFT)</CardTitle>
+        <CardTitle>Erc721 {tokenType} (NFT) (development stage)</CardTitle>
         <CardDescription>
           Make changes to your account here. Click save when you're done.
         </CardDescription>

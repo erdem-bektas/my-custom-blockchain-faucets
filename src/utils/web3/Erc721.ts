@@ -1,6 +1,7 @@
 import Web3 from 'web3';
+import IErc721 from './IErc721';
 
-export default class Erc721Token {
+export default class Erc721Token implements IErc721{
     private _web3: Web3;
     private _contract: any;
     private _contractAddress: string;
@@ -13,6 +14,36 @@ export default class Erc721Token {
         this._contract = new this._web3.eth.Contract(contractAbi, contractAddress);
         this._privateKey = privateKey;
         this._account = this._web3.eth.accounts.privateKeyToAccount(this._privateKey).address;
+    }
+    balanceOf(owner: string): Promise<number> {
+        throw new Error('Method not implemented.');
+    }
+    getApproved(tokenId: number): Promise<boolean> {
+        throw new Error('Method not implemented.');
+    }
+    ownerOf(tokenId: number): Promise<string> {
+        throw new Error('Method not implemented.');
+    }
+    tokenURI(tokenId: number): Promise<string> {
+        throw new Error('Method not implemented.');
+    }
+    totalSupply(): Promise<number> {
+        throw new Error('Method not implemented.');
+    }
+    mint(to: string, id: number, amount: number, data: string): Promise<void> {
+        throw new Error('Method not implemented.');
+    }
+    mintBatch(to: string, ids: number[], amounts: number[], data: string): Promise<void> {
+        throw new Error('Method not implemented.');
+    }
+    setURI(uri: string): Promise<void> {
+        throw new Error('Method not implemented.');
+    }
+    transferFrom(from: string, to: string, tokenId: number): Promise<boolean> {
+        throw new Error('Method not implemented.');
+    }
+    transferOwnership(newOwner: string): Promise<void> {
+        throw new Error('Method not implemented.');
     }
 
     public async getBalance(): Promise<any> {
