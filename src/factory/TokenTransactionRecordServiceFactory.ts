@@ -1,5 +1,5 @@
 import { tokenTransactionRepositoryFactory } from './tokenTransactionRepositoryFactory';
-import TokenTransactionService from '@/service/TokenTransactionService';
+import TokenTransactionService from '@/service/TokenTransactionRecordService';
 
 export const tokenTransactionServiceFactory = () => {
     const tokenTransactionRepository = tokenTransactionRepositoryFactory();

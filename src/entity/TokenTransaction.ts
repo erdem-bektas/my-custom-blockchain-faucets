@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { IsNotEmpty, IsString, IsDecimal, IsEnum, IsDate } from 'class-validator';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { IsNotEmpty, IsString, IsDecimal, IsEnum, IsDate } from "class-validator";
 
 @Entity()
 export default class TokenTransaction {
@@ -11,19 +11,18 @@ export default class TokenTransaction {
     @IsString()
     userAddress!: string;
 
-    @Column('decimal', { precision: 18, scale: 2 })
+    @Column("decimal", { precision: 18, scale: 2 })
     @IsNotEmpty()
     @IsDecimal()
     amount!: number;
 
-    @Column()
-    @IsNotEmpty()
+    @Column({ nullable: true })
     @IsString()
     transactionHash!: string;
 
-    @Column({ default: 'pending' })
-    @IsEnum({ pending: 'pending', completed: 'completed', failed: 'failed' })
-    status!: 'pending' | 'completed' | 'failed';
+    @Column({ default: "pending" })
+    @IsEnum({ pending: "pending", sended: "sended", failed: "failed", unexpectedErr: "unexpectedErr" })
+    status!: "pending" | "sended" | "failed" | "unexpectedErr";
 
     @CreateDateColumn()
     @IsDate()

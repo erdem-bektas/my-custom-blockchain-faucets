@@ -11,9 +11,7 @@ export class CreateTokenTransactionDto {
 
     @IsNotEmpty()
     @IsString()
-    transactionHash!: string;
+    @IsEnum({ Ethereum: "Ethereum", Polygon: "Polygon", BSC: "BSC" })
+    network!: Networks.Ethereum | Networks.Polygon | Networks.BSC
 
-    @IsNotEmpty()
-    @IsEnum({ pending: 'pending', failed: 'failed' })
-    status!: 'pending' | 'failed';
 }
