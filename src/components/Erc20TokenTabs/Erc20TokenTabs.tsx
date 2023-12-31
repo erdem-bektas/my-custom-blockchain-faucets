@@ -28,6 +28,8 @@ interface TabContentProps {
 }
 
 const TokenTabContent = React.memo(({ tokenType, amountDefaultValue, network }: TabContentProps) => {
+  TokenTabContent.displayName = "TokenTabContent";
+
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState<number>(amountDefaultValue);
   const [wallet, setWallet] = useState<string>('');

@@ -27,6 +27,8 @@ interface TabContentProps {
 }
 
 const TabContent = React.memo(({ tokenType, nftId, wallet }: TabContentProps) => {
+  TabContent.displayName = "TabContent";
+
   const [isLoading, setIsLoading] = useState(false);
   const [inputNftId, setInputNftId] = useState<string>('');
   const [inputWallet, setInputwallet] = useState<string>('');
@@ -46,6 +48,8 @@ const TabContent = React.memo(({ tokenType, nftId, wallet }: TabContentProps) =>
       tokenType,
       nftId: inputNftId,
       wallet: inputWallet,
+      network: "",
+      token: ""
     };
     sendTokenData(data).then(() => setIsLoading(false)).catch(() => setIsLoading(true));
   };

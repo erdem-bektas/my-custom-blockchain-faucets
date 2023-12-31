@@ -24,7 +24,12 @@ export default class TokenTransactionManager {
 
                     if (transactionResult.status === true && transactionResult.type === "0x2") {
                         const statusUpdate = await this.transactionRecordService.updateTokenTransactionById(savedTransactionData.id, { status: "sended" })
-                        resolve(statusUpdate);
+                        if (statusUpdate !== null) {
+                            resolve();
+                        }
+                        else {
+                            reject();
+                        }
                     }
                     else if (transactionResult.status !== true || transactionResult.type !== "0x2") {
                         const statusUnexpected = await this.transactionRecordService.updateTokenTransactionById(savedTransactionData.id, { status: "unexpectedErr" })

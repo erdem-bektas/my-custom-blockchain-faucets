@@ -14,6 +14,10 @@ export default async function handler(
         await connectToDatabase();
         res.status(200).json({ message: 'Database connected successfully' });
     } catch (error) {
-        res.status(500).json({ message: 'Database connection failed', error: error.message });
+        if (error instanceof Error) {
+            res.status(500).json({ message: 'Database connection failed', error: error.message });
+        } else {
+            res.status(500).json({ message: 'Database connection failed', error: 'Unknown error' });
+        }
     }
 }
