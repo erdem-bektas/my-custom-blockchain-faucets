@@ -1,3 +1,5 @@
+import Faucet from "@/components/FaucetComponent";
+
 export default function Home() {
-  return <div></div>;
+  return <Faucet network="Ethereum" />
 }
